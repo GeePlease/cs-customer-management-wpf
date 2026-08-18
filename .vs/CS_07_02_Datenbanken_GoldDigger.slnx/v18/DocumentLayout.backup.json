@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{236162C6-EA00-4E3E-BA54-EE15D8D168F8}|GoldDigger\\GoldDigger.csproj|c:\\export\\gmeiner\\quali_c#\\cs_07_02_datenbanken_golddigger\\golddigger\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{236162C6-EA00-4E3E-BA54-EE15D8D168F8}|GoldDigger\\GoldDigger.csproj|solutionrelative:golddigger\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "GoldDigger\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\MainWindow.xaml",
+              "RelativeToolTip": "GoldDigger\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-18T17:04:26.911Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+# --- Visual Studio ---
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# --- Build-Ordner (WPF / C#) ---
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# --- Benutzer-/Backup-Dateien ---
+*.log
+*.cache
+*.opendb
+*.VC.db
+*.opensdf
+*.sdf
+
+# --- WPF / .NET spezifisch ---
+[Oo]bj/
+[Bb]in/
+ClientBin/
+[Ll]og/
+[Ll]ogs/
+
+# --- Betriebssysteme ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
