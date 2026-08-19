@@ -38,3 +38,8 @@ Desktop.ini
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# --- SQLite Datenbanken ---
+*.db
+*.db-shm
+*.db-wal
