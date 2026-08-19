@@ -16,7 +16,7 @@ namespace GoldDigger.View
     /// <summary>
     /// Interaktionslogik für Login.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class Login : UserControl
     {
         public Login()
         {

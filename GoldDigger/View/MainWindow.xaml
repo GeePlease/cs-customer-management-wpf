@@ -4,9 +4,93 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoldDigger.View"
+        xmlns:vm="clr-namespace:GoldDigger.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="GoldDigger - Projektplanung &amp; Login" Height="550" Width="950"
+        ResizeMode="CanResize">
 
+    <!-- BooleanToVisibilityConverter für das Umschalten der Ansichten -->
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <!-- DATACONTEXT -->
+    <Window.DataContext>
+        <vm:MainWindow />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER / TITEL (Spalte 0 & 1, Zeile 0) -->
+        <Border Grid.ColumnSpan="2" Grid.Row="0" Background="#2C3E50" Padding="15">
+            <DockPanel>
+                <TextBlock Text="GoldDigger - Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left"/>
+                <TextBlock Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- LEFT MENU (Spalte 0, Zeile 1) - Gesteuert über IsMenuEnabled -->
+        <Border Grid.Column="0" Grid.Row="1" Background="#1E272E" Padding="15">
+            <Grid IsEnabled="{Binding IsMenuEnabled}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Haupt-Navigation (Oben im Menü) -->
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="MENÜ" Foreground="#1ABC9C" FontSize="14" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <Button Command="{Binding OpenDashboardCommand}" Content="Neukunde" Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
+                    <Button Command="{Binding OpenProjectsCommand}" Content="Kundendaten bearbeiten" Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0" Click="Button_Click"/>
+                    <Button Command="{Binding OpenSettingsCommand}" Content="Kunde löschen" Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
+                </StackPanel>
+
+                <!-- Abgesetzter Beenden-Button (Unten im Menü) -->
+                <StackPanel Grid.Row="1">
+                    <Separator Background="#34495E" Margin="0,10"/>
+                    <Button Command="{Binding ExitApplicationCommand}" Content="Beenden" Background="#1ABC9C" Foreground="White" Height="35" FontWeight="Bold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- MAIN SECTION / CONTENT (Spalte 1, Zeile 1) -->
+        <Grid Grid.Column="1" Grid.Row="1" Margin="15">
+
+            <!-- 1. LOGIN ANSICHT (Wird angezeigt, solange der Benutzer nicht eingeloggt ist) -->
+            <ContentControl Content="{Binding LoginVM}"
+                            Visibility="{Binding IsLoginVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <local:Login/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
+            <!-- 2. DASHBOARD ANSICHT -->
+            <ContentControl Visibility="{Binding IsDashboardVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <!-- Später Platzhalter oder eigenes UserControl -->
+                <TextBlock Text="Willkommen im Dashboard (Nach Login sichtbar)!" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </ContentControl>
+
+            <!-- 3. PROJEKTE ANSICHT -->
+            <ContentControl Visibility="{Binding IsProjectsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock Text="..." FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </ContentControl>
+
+            <!-- 4. EINSTELLUNGEN ANSICHT -->
+            <ContentControl Visibility="{Binding IsSettingsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock Text="..." FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </ContentControl>
+
+        </Grid>
     </Grid>
 </Window>
