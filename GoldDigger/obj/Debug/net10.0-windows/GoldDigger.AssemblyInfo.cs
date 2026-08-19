@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoldDigger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+995ccedfaf11b4878db55d1c9c99e5f2f4546402")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+295cdba96e60915056ce0866e2d4536e313a7898")]
 [assembly: System.Reflection.AssemblyProductAttribute("GoldDigger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GoldDigger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
