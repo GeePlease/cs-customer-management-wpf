@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|c:\\export\\gmeiner\\quali_c#\\cs_07_02_datenbanken_golddigger\\golddigger\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|solutionrelative:golddigger\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|c:\\export\\gmeiner\\quali_c#\\cs_07_02_datenbanken_golddigger\\golddigger\\view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|solutionrelative:golddigger\\view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|c:\\export\\gmeiner\\quali_c#\\cs_07_02_datenbanken_golddigger\\golddigger\\view\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ADF3CEB-0B0F-D50F-F658-4621FAE8F2C4}|GoldDigger\\GoldDigger.csproj|solutionrelative:golddigger\\view\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,33 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "GoldDigger\\View\\Login.xaml.cs",
-              "ToolTip": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\Login.xaml.cs",
-              "RelativeToolTip": "GoldDigger\\View\\Login.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-19T10:16:45.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\Login.xaml",
-              "RelativeDocumentMoniker": "GoldDigger\\View\\Login.xaml",
-              "ToolTip": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\Login.xaml",
-              "RelativeToolTip": "GoldDigger\\View\\Login.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-08-19T10:09:09.124Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -58,7 +25,7 @@
               "ToolTip": "C:\\Export\\Gmeiner\\Quali_C#\\CS_07_02_Datenbanken_GoldDigger\\GoldDigger\\View\\MainWindow.xaml",
               "RelativeToolTip": "GoldDigger\\View\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-08-18T17:04:26.911Z",
+              "WhenOpened": "2026-08-19T10:27:22.173Z",
               "EditorCaption": ""
             }
           ]

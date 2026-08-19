@@ -4,7 +4,9 @@ using System.Text;
 
 namespace GoldDigger.Model
 {
-    internal class User
+    public class User
     {
+        private string UserName { get; set; }
+        private string Password { get; set; }
     }
 }
