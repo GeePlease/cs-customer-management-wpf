@@ -1,13 +1,53 @@
 ﻿<UserControl x:Class="GoldDigger.View.Login"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:GoldDigger.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GoldDigger.View"
+             xmlns:vm="clr-namespace:GoldDigger.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        
+    <!-- Grid zum Zentrieren der Login-Karte -->
+    <Grid Background="Transparent">
+
+        <!-- Weiße "Login-Karte" in der Mitte (Höhe auf 440 angepasst für den 2. Button) -->
+        <Border Width="350" Height="440" Background="White" CornerRadius="10" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                BorderBrush="#E0E0E0" BorderThickness="1">
+
+            <StackPanel Margin="25">
+
+                <!-- Überschrift -->
+                <TextBlock Text="Login" FontSize="22" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <!-- Benutzername Label + Eingabe -->
+                <TextBlock Text="Benutzername" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Height="32" Padding="5" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
+
+                <!-- Passwort Label + Eingabe -->
+                <TextBlock Text="Passwort" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
+                <PasswordBox x:Name="txt_password" Height="32" Padding="5" Margin="0,0,0,15" VerticalContentAlignment="Center"/>
+
+                <!-- Login Button -->
+                <Button Content="Einloggen" Command="{Binding LoginCommand}" Height="36" Background="#1ABC9C" 
+                        Foreground="White" FontWeight="Bold" Cursor="Hand" Margin="0,0,0,8"
+                        HorizontalAlignment="Stretch"/>
+
+                <!-- Registrieren Button  -->
+                <Button Content="Registrieren" Command="{Binding RegisterCommand}" Height="32" Background="#34495E" 
+                        Foreground="White" FontWeight="SemiBold" Cursor="Hand"
+                        HorizontalAlignment="Stretch"/>
+
+                <!-- Label für Fehlermeldungen / Erfolgsmeldungen -->
+                <Label x:Name="lbl_loginMsg" 
+                       Content="{Binding ErrorMessage}" 
+                       Foreground="#2C3E50"
+                       HorizontalContentAlignment="Center" 
+                       FontSize="12" Height="30" Margin="0,5,0,0"/>
+
+            </StackPanel>
+        </Border>
+
     </Grid>
 </UserControl>
