@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GoldDigger.ViewModel
 {
-    internal class NewCustomer
+    internal class CustomersViewModel
     {
     }
 }

@@ -16,7 +16,7 @@
 
     <!-- DATACONTEXT -->
     <Window.DataContext>
-        <vm:MainWindow />
+        <vm:MainWindowViewModel/>
     </Window.DataContext>
 
     <Grid>
@@ -31,18 +31,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- HEADER / TITEL (Spanne über alle Spalten, exklusiv in Zeile 0) -->
+        <!-- HEADER / TITEL -->
         <Border Grid.ColumnSpan="3" Grid.Row="0" Background="#2C3E50" Padding="15">
             <DockPanel>
-                <!-- Titel links -->
                 <TextBlock Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-
-                <!-- Willkommensnachricht / UserMessage jetzt fest oben im Header rechts -->
                 <TextBlock Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </DockPanel>
         </Border>
 
-        <!-- LEFT MENU (Spalte 0 & 1, Zeile 1) - Gesteuert über IsMenuEnabled -->
+        <!-- LEFT MENU - Gesteuert über IsMenuEnabled -->
         <Border Grid.Column="0" Grid.Row="1" Background="#1E272E" Padding="15" Grid.ColumnSpan="2">
             <Grid IsEnabled="{Binding IsMenuEnabled}">
                 <Grid.RowDefinitions>
@@ -50,7 +47,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Haupt-Navigation (Oben im Menü) -->
                 <StackPanel Grid.Row="0">
                     <TextBlock Text="AKTIONEN" Foreground="#1ABC9C" FontSize="14" FontWeight="Bold" Margin="0,0,0,15"/>
                     <Button Content="Neukunde anlegen" Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
@@ -58,7 +54,6 @@
                     <Button Content="Kunde löschen" Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
                 </StackPanel>
 
-                <!-- Abgesetzter Beenden-Button (Unten im Menü) -->
                 <StackPanel Grid.Row="1">
                     <Separator Background="#34495E" Margin="0,10"/>
                     <Button Command="{Binding ExitApplicationCommand}" Content="Beenden" Background="#1ABC9C" Foreground="White" Height="35" FontWeight="Bold"/>
@@ -66,36 +61,32 @@
             </Grid>
         </Border>
 
-        <!-- MAIN SECTION / CONTENT (Spalte 2, Zeile 1 - Bleibt strikt unter dem Header) -->
-        <Grid Grid.Column="2" Grid.Row="1" Margin="15">
+        <!-- MAIN SECTION / CONTENT (Alle Ansichten exakt nach dem Vorbild eingebunden) -->
 
-            <!-- 1. LOGIN ANSICHT (Wird angezeigt, solange der Benutzer nicht eingeloggt ist) -->
-            <ContentControl Content="{Binding LoginVM}"
-                            Visibility="{Binding IsLoginVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <ContentControl.ContentTemplate>
-                    <DataTemplate>
-                        <local:Login/>
-                    </DataTemplate>
-                </ContentControl.ContentTemplate>
-                
-            </ContentControl>
+        <!-- 1. LOGIN ANSICHT -->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
+                        Visibility="{Binding IsLoginVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <local:Login DataContext="{Binding LoginVM}" />
+        </ContentControl>
 
-            <!-- NEUKUNDE-->
-            <ContentControl Visibility="{Binding IsNewCustomerVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <!-- Hier steht kein Text mehr drin, der Text wandert komplett in die UserMessage im Header -->
-                <TextBlock Text="" />
-            </ContentControl>
+        <!-- 2. NEUKUNDE -->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
+                        Visibility="{Binding IsNewCustomerVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <!-- Platzhalter bis die View steht -->
+            <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </ContentControl>
 
-            <!-- KUNDENDATEN BEARBEITEN -->
-            <ContentControl Visibility="{Binding IsEditVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </ContentControl>
+        <!-- 3. KUNDENDATEN BEARBEITEN -->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
+                        Visibility="{Binding IsEditVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </ContentControl>
 
-            <!-- KUNDE LÖSCHEN -->
-            <ContentControl Visibility="{Binding IsDeleteVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </ContentControl>
+        <!-- 4. KUNDE LÖSCHEN -->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
+                        Visibility="{Binding IsDeleteVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </ContentControl>
 
-        </Grid>
     </Grid>
 </Window>
