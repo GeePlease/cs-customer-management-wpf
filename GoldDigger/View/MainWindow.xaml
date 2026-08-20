@@ -63,26 +63,32 @@
 
         <!-- MAIN SECTION / CONTENT (Alle Ansichten exakt nach dem Vorbild eingebunden) -->
 
-        <!-- 1. LOGIN ANSICHT -->
-        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
-                        Visibility="{Binding IsLoginVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <!--  LOGIN VIEW -->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15" 
+                    Visibility="{Binding IsLoginVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
             <local:Login DataContext="{Binding LoginVM}" />
         </ContentControl>
 
-        <!-- 2. NEUKUNDE -->
+        <!--  KUNDENÜBERSICHT (Default View after successful login)-->
+        <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
+                    Visibility="{Binding IsCustomersVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <local:Customers DataContext="{Binding CustomersVM}" />
+        </ContentControl>
+
+        <!-- NEUKUNDE -->
         <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
                         Visibility="{Binding IsNewCustomerVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
             <!-- Platzhalter bis die View steht -->
             <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </ContentControl>
 
-        <!-- 3. KUNDENDATEN BEARBEITEN -->
+        <!-- KUNDENDATEN BEARBEITEN -->
         <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
                         Visibility="{Binding IsEditVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
             <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </ContentControl>
 
-        <!-- 4. KUNDE LÖSCHEN -->
+        <!--  KUNDE LÖSCHEN -->
         <ContentControl Grid.Column="2" Grid.Row="1" Margin="15"
                         Visibility="{Binding IsDeleteVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
             <TextBlock Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>

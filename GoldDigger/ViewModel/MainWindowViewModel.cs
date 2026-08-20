@@ -10,21 +10,28 @@ namespace GoldDigger.ViewModel
 
         // Visibility Menu Buttons
 
-        // Das Login-ViewModel, das in der MainWindow.xaml aufgerufen wird
+        // Login-ViewModel, called in MainWindow.xaml 
         [ObservableProperty]
         private LoginViewModel loginVM = new LoginViewModel();
+
+        // Customers-ViewModel, called in MainWindow.xaml (public! not oversable)
+        public  CustomersViewModel CustomersVM { get; } = new CustomersViewModel();
 
         // Visibility Login Mask
         [ObservableProperty]
         private bool isLoginVisible = true;
 
+        // Visbility Customer Data (default View after successful login)
+        [ObservableProperty] private bool isCustomersVisible = false;
+
         // Visibility New Customer Mask
         [ObservableProperty]
         private bool isNewCustomerVisible = false;
 
-        // Visibility Login Mask
+        // User Navigation Message
         [ObservableProperty]
         private string userMessage = "Bitte einloggen";
+
 
         // CONSTRUCTOR
         public MainWindowViewModel()
@@ -48,7 +55,7 @@ namespace GoldDigger.ViewModel
 
             // change login visibility and default visibility
             IsLoginVisible = false;
-            // TODO: defdault customer view
+            IsCustomersVisible = true;
 
             // empty textboxes
             LoginVM.Username = "";

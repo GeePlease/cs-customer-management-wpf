@@ -1,14 +1,56 @@
-﻿<Page x:Class="GoldDigger.View.CustomerDataxaml"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:GoldDigger.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="CustomerDataxaml">
+﻿<UserControl x:Class="GoldDigger.View.Customers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GoldDigger.View"
+             xmlns:vm="clr-namespace:GoldDigger.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
 
-    <Grid>
-        
+    <Grid Background="#FFF7FAFC">
+        <Border Background="White" CornerRadius="10" Margin="15" Padding="15"
+                BorderBrush="#E0E0E0" BorderThickness="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Überschrift / Titel -->
+                <TextBlock Text="Kundenübersicht" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
+
+                <!-- Modernes DataGrid für die Kunden -->
+                <DataGrid Grid.Row="1" ItemsSource="{Binding CustomersList}" AutoGenerateColumns="False" 
+                          IsReadOnly="True" Background="White" BorderBrush="#E0E0E0" 
+                          RowHeight="28" CanUserAddRows="False" GridLinesVisibility="Horizontal"
+                          AlternatingRowBackground="#F8F9FA">
+
+                    <!-- DataGrid Header Style -->
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#2C3E50"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Padding" Value="8,5"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <!-- Colums based on Customer.cs (no ID) -->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Vorname" Binding="{Binding FirstName}" Width="120"/>
+                        <DataGridTextColumn Header="Nachname" Binding="{Binding LastName}" Width="120"/>
+                        <DataGridTextColumn Header="Straße" Binding="{Binding Street}" Width="130"/>
+                        <DataGridTextColumn Header="Hausnr." Binding="{Binding StreetNumber}" Width="70"/>
+                        <DataGridTextColumn Header="PLZ" Binding="{Binding PostCode}" Width="70"/>
+                        <DataGridTextColumn Header="Wohnort" Binding="{Binding Residence}" Width="120"/>
+                        <DataGridTextColumn Header="E-Mail" Binding="{Binding Mail}" Width="130"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Border>
     </Grid>
-</Page>
+</UserControl>
