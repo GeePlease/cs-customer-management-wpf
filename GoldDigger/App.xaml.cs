@@ -2,7 +2,10 @@
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using GoldDigger.Data; // namespace
+using GoldDigger.Data;
+using GoldDigger.Services; // namespace
+
+//TODO: Passwörter hashen!
 
 namespace GoldDigger
 {
@@ -28,6 +31,11 @@ namespace GoldDigger
                 {
                     Console.WriteLine("Datenbank erfolgreich initialisiert!");
                 }
+
+                // create test data (from Serviess/ TestDataSeeder)
+                TestDataSeeder.CreateTestData();
+                Console.WriteLine("Testdaten erfolgreich kreiert.");
+
             }
             catch (Exception ex)
             {
