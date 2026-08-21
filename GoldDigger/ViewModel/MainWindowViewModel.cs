@@ -17,6 +17,14 @@ namespace GoldDigger.ViewModel
         // Customers-ViewModel, called in MainWindow.xaml (public! not oversable)
         public  CustomersViewModel CustomersVM { get; } = new CustomersViewModel();
 
+        // NewCustomer View Model
+        [ObservableProperty]
+        private NewCustomerViewModel newCustomerVM = new NewCustomerViewModel();
+
+        // Menu Button Visbility property
+        [ObservableProperty]
+        private bool isMenuEnabled = false;
+
         // Visibility Login Mask
         [ObservableProperty]
         private bool isLoginVisible = true;
@@ -36,7 +44,7 @@ namespace GoldDigger.ViewModel
         // CONSTRUCTOR
         public MainWindowViewModel()
         {
-            // Hier abonnieren wir das Event aus dem LoginViewModel!
+            // Event from LoginViewModel!
             LoginVM.OnLoginSuccess += HandleLoginSuccess;
         }
 
@@ -50,10 +58,8 @@ namespace GoldDigger.ViewModel
             // header message
             UserMessage = "Erfolgreich angemeldet!";
 
-            // TODO: enable menu buttons
-            //IsMenuEnabled = true;
-
-            // delay for usability (time to read)
+            // enable menu buttons
+            isMenuEnabled = true;
 
             // change login visibility and default visibility
             IsLoginVisible = false;
@@ -62,6 +68,14 @@ namespace GoldDigger.ViewModel
             // empty textboxes
             LoginVM.Username = "";
             LoginVM.Password = "";
+        }
+
+        // Relay Command: Button click "Kundendaten anzeigen" - change visibility
+        [RelayCommand]
+        private void ShowCustomersView()
+        {
+            IsNewCustomerVisible = false;
+            IsCustomersVisible = true;
         }
 
         // Relay Command: Button  click "Neukunde anlegen" - change visibility
