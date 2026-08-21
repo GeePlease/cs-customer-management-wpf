@@ -54,7 +54,7 @@ namespace GoldDigger.ViewModel
 
         // METHODS
 
-        // On Login Success
+        // ----On Login Success
         private void HandleLoginSuccess()
         {
             // header message
@@ -72,7 +72,7 @@ namespace GoldDigger.ViewModel
             LoginVM.Password = "";
         }
 
-        // Relay Command: Button click "Kundendaten anzeigen" - change visibility
+        // ----Relay Command: Button click "Kundendaten anzeigen" - change visibility
         [RelayCommand]
         private void ShowCustomersView()
         {
@@ -81,15 +81,27 @@ namespace GoldDigger.ViewModel
             IsCustomersVisible = true;
         }
 
-        // Relay Command: Button  click "Neukunde anlegen" - change visibility
+        // ----Relay Command: Button  click "Neukunde anlegen" - change visibility
         [RelayCommand] private void ShowNewCustomerView()
         {
             IsCustomersVisible = false;
             IsNewCustomerVisible = true;
         }
 
+        // ----Relay Command: Button click "Kunde löschen"
+        [RelayCommand]
+        private void DeleteCustomer()
+        {
+            // 1. Sicher zur Kundenübersicht wechseln
+            IsNewCustomerVisible = false;
+            IsCustomersVisible = true;
 
-        // Relay Command: Button click  "Beenden"
+            // 2. Den Lösch-Befehl im CustomersViewModel ausführen
+            CustomersVM.DeleteCustomer();
+        }
+
+
+        // ----Relay Command: Button click  "Beenden"
         [RelayCommand]
         private void ExitApplication()
         {

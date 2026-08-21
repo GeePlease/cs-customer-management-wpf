@@ -22,8 +22,8 @@
                 <TextBlock Text="Kundenübersicht" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
 
                 <!-- Modernes DataGrid für die Kunden -->
-                <DataGrid Grid.Row="1" ItemsSource="{Binding CustomersList}" AutoGenerateColumns="False" 
-                          IsReadOnly="True" Background="White" BorderBrush="#E0E0E0" 
+                <DataGrid Grid.Row="1" ItemsSource="{Binding CustomersList}" SelectedItem="{Binding SelectedCustomer}"
+                          AutoGenerateColumns="False" IsReadOnly="True" Background="White" BorderBrush="#E0E0E0" 
                           RowHeight="28" CanUserAddRows="False" GridLinesVisibility="Horizontal"
                           AlternatingRowBackground="#F8F9FA">
 

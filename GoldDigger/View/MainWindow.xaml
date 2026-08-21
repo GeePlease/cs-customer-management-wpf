@@ -34,8 +34,10 @@
         <!-- HEADER / TITEL -->
         <Border Grid.ColumnSpan="3" Grid.Row="0" Background="#2C3E50" Padding="15">
             <DockPanel>
+                
                 <TextBlock Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+           
             </DockPanel>
         </Border>
 
@@ -49,6 +51,7 @@
 
                 <!-- Top buttons  (Binding isMenuEnabled) -->
                 <StackPanel Grid.Row="0">
+                    
                     <Button Content="Kundendaten anzeigen" Command="{Binding ShowCustomersViewCommand}" 
                     IsEnabled="{Binding IsMenuEnabled}"
                     Height="35" Margin="0,0,0,20" HorizontalContentAlignment="Left" Padding="10,0"
@@ -59,12 +62,16 @@
                     <Button Content="Neukunde anlegen" Command="{Binding ShowNewCustomerViewCommand}" 
                     IsEnabled="{Binding IsMenuEnabled}"
                     Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
+                    
                     <Button Content="Kundendaten bearbeiten" 
                     IsEnabled="{Binding IsMenuEnabled}"
                     Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
+
                     <Button Content="Kunde löschen" 
+                    Command="{Binding CustomersVM.DeleteCustomerCommand}"
                     IsEnabled="{Binding IsMenuEnabled}"
                     Height="35" Margin="0,0,0,8" HorizontalContentAlignment="Left" Padding="10,0"/>
+
                 </StackPanel>
 
                 <!-- Low Button: Beenden (always visible -->
