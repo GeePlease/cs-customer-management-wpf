@@ -64,8 +64,15 @@ namespace GoldDigger.ViewModel
             LoginVM.Password = "";
         }
 
+        // Relay Command: Button  click "Neukunde anlegen" - change visibility
+        [RelayCommand] private void ShowNewCustomerView()
+        {
+            IsCustomersVisible = false;
+            IsNewCustomerVisible = true;
+        }
 
-        // Relay Command: Button "Beenden"
+
+        // Relay Command: Button click  "Beenden"
         [RelayCommand]
         private void ExitApplication()
         {
