@@ -59,7 +59,7 @@ namespace GoldDigger.ViewModel
             UserMessage = "Erfolgreich angemeldet!";
 
             // enable menu buttons
-            isMenuEnabled = true;
+            IsMenuEnabled = true;
 
             // change login visibility and default visibility
             IsLoginVisible = false;
