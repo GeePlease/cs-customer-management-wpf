@@ -80,13 +80,13 @@
                 <TextBox Text="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Height="30" Padding="4" Margin="0,0,0,15" VerticalContentAlignment="Center"/>
 
                 <!-- Anlegen Button -->
-                <Button Content="Anlegen" Command="{Binding CreateCustomerCommand}"
+                <Button Content="Anlegen" Command="{Binding CreateNewCustomerCommand}"
                         Height="35" Background="#1ABC9C" Foreground="White" FontWeight="Bold" 
                         Cursor="Hand" Margin="0,0,0,8" HorizontalAlignment="Stretch"/>
 
                 <!-- Feedback Label -->
                 <Label Content="{Binding Message}" 
-                       Foreground="#2C3E50"
+                       Foreground="#2C3E50" Height="35" 
                        HorizontalContentAlignment="Center" 
                        FontSize="12" Padding="0"/>
 

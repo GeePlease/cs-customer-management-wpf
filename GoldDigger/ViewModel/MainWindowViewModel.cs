@@ -8,7 +8,6 @@ namespace GoldDigger.ViewModel
     {
         // ATTRIBUTES & VIEWMODELS
 
-        // Visibility Menu Buttons
 
         // Login-ViewModel, called in MainWindow.xaml 
         [ObservableProperty]
@@ -44,10 +43,13 @@ namespace GoldDigger.ViewModel
         // CONSTRUCTOR
         public MainWindowViewModel()
         {
-            // Event from LoginViewModel!
             LoginVM.OnLoginSuccess += HandleLoginSuccess;
-        }
 
+            // Event from NewCustomerViewModel:
+            NewCustomerVM.OnCustomerCreated += () => {
+                CustomersVM.LoadCustomers();
+            };
+        }
 
 
         // METHODS
@@ -74,6 +76,7 @@ namespace GoldDigger.ViewModel
         [RelayCommand]
         private void ShowCustomersView()
         {
+
             IsNewCustomerVisible = false;
             IsCustomersVisible = true;
         }
