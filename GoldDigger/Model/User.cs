@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GoldDigger.Model
+﻿namespace GoldDigger.Model
 {
     public class User
     {

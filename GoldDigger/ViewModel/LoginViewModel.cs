@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GoldDigger.Data;
 using GoldDigger.Model;

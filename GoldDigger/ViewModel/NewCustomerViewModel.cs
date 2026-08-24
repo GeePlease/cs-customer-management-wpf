@@ -3,12 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using GoldDigger.Data;
 using GoldDigger.Model;
 using GoldDigger.Services;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Policy;
-using System.Text;
-using System.Windows.Controls;
 
 namespace GoldDigger.ViewModel
 {

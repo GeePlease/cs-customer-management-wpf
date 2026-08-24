@@ -1,16 +1,12 @@
 ﻿using GoldDigger.Data;
 using GoldDigger.Model;
-using GoldDigger.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+
 
 namespace GoldDigger.Services
 {
     internal class TestDataSeeder
     {
-        //ATTRIBUTES
+        // ATTRIBUTES
 
         // CONSTRUCTOR
 

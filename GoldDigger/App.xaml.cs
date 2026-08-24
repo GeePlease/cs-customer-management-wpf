@@ -1,11 +1,7 @@
-﻿using System;
-using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using GoldDigger.Data;
 using GoldDigger.Services; // namespace
 
-//TODO: Passwörter hashen!
 
 namespace GoldDigger
 {
