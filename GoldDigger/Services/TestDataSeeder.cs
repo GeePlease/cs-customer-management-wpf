@@ -47,17 +47,24 @@ namespace GoldDigger.Services
             {
                 context.Database.EnsureCreated();
 
-                // add to db only if tables are empty!
-                if (!context.Customers.Any() && !context.Users.Any())
+                // add customer data only if table empty
+                if (!context.Customers.Any())
                 {
                     context.Customers.AddRange(testDataCustomers);
-                    context.Users.AddRange(testDataUsers);
-
-                    context.SaveChanges();
                 }
-            }
 
+                // add user data only if table empty
+                if (!context.Users.Any())
+                {
+                    context.Users.AddRange(testDataUsers);
+                }
+
+                // sasve chantes in db
+                context.SaveChanges();
+            }
         }
+
+       
 
 
     // END CLASS

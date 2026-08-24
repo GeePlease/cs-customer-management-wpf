@@ -8,42 +8,71 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <!-- Eingebauter Converter, der true zu Visible und false zu Collapsed macht -->
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
 
     <!-- Grid zum Zentrieren der Login-Karte -->
     <Grid>
 
-        <!-- Weiße "Login-Karte" in der Mitte (Höhe auf 440 angepasst für den 2. Button) -->
-        <Border Width="350" Height="440" Background="White" CornerRadius="10" 
+        <!-- Weiße "Login-Karte" (Höhe etwas dynamischer oder groß genug für das Zusatzfeld) -->
+        <Border Width="350" Background="White" CornerRadius="10" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"
-                BorderBrush="#E0E0E0" BorderThickness="1">
+                BorderBrush="#E0E0E0" BorderThickness="1" Padding="25">
 
-            <StackPanel Margin="25">
+            <StackPanel>
 
-                <!-- Überschrift -->
-                <TextBlock Text="Login" FontSize="22" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                <!-- Überschrift ändert sich optional je nach Modus -->
+                <TextBlock Text="Login / Registrierung" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
-                <!-- Benutzername Label + Eingabe -->
+                <!-- Benutzername -->
                 <TextBlock Text="Benutzername" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Height="32" Padding="5" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
-                
-                <!-- Passwortbox, Label + Eingabe (PasswordBox erlaubt kein automatisches Binding aus Safety Gründen -->
-                <TextBlock Text="Passwort" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
-                <PasswordBox x:Name="txt_password" PasswordChanged="PasswordBox_PasswordChanged" Height="32" Padding="5" Margin="0,0,0,15" VerticalContentAlignment="Center"/>
 
-                <!-- Login Button -->
+                <!-- Passwort 1 -->
+                <TextBlock Text="Passwort" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
+                <PasswordBox x:Name="txt_password" PasswordChanged="PasswordBox_PasswordChanged" Height="32" Padding="5" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
+
+                <!-- PASSWORT BESTÄTIGEN (Wird nur im Registrierungs-Modus eingeblendet!) -->
+                <StackPanel Visibility="{Binding IsRegisterMode, Converter={StaticResource BoolToVis}}">
+                    <TextBlock Text="Passwort wiederholen" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
+                    <!-- Hinweis: Für die 2te PasswordBox müsstest du im Code-Behind ein Event anlegen oder per Binding lösen. 
+                         Da PasswordBox kein direktes Binding unterstützt, lösen wir das im Code-Behind ähnlich wie das erste Feld -->
+                    <PasswordBox x:Name="txt_confirmPassword" PasswordChanged="ConfirmPasswordBox_PasswordChanged" Height="32" Padding="5" Margin="0,0,0,15" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Login Button (automatisch ausgeblendet, sobald IsRegisterMode auf true springt) -->
                 <Button Content="Einloggen" Command="{Binding LoginCommand}"
                         Height="36" Background="#1ABC9C" Foreground="White" FontWeight="Bold" 
-                        Cursor="Hand" Margin="0,0,0,8" HorizontalAlignment="Stretch"/>
+                        Cursor="Hand" Margin="0,0,0,8" HorizontalAlignment="Stretch">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <!-- Wenn IsRegisterMode true ist, wird der Button eingeklappt -->
+                                <DataTrigger Binding="{Binding IsRegisterMode}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
-                <!-- Registrieren Button  -->
-                <Button Content="Registrieren" Command="{Binding RegisterCommand}" Height="32" Background="#34495E" 
-                        Foreground="White" FontWeight="SemiBold" Cursor="Hand"
-                        HorizontalAlignment="Stretch"/>
+                <!-- Registrieren / Absenden Button -->
+                <Button Content="Registrieren" Command="{Binding RegisterCommand}" 
+                        Height="32" Background="#34495E" Foreground="White" FontWeight="SemiBold" Cursor="Hand"
+                        HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
 
-                <!-- Label für Fehlermeldungen / Erfolgsmeldungen -->
-                <Label x:Name="lbl_loginMsg" 
-                       Content="{Binding ErrorMessage}" 
-                       Foreground="#2C3E50"
+                <!-- Zurück-Button (Nur im Registrierungs-Modus sichtbar, um abzubrechen) -->
+                <Button Content="Zurück zum Login" Command="{Binding CancelRegisterCommand}"
+                        Visibility="{Binding IsRegisterMode, Converter={StaticResource BoolToVis}}"
+                        Height="28" Background="Transparent" Foreground="#7F8C8D" BorderBrush="Transparent"
+                        Cursor="Hand" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+
+                <!-- Fehlermeldungen -->
+                <Label Content="{Binding ErrorMessage}" 
+                       Foreground="#E74C3C"
                        HorizontalContentAlignment="Center" 
                        FontSize="12" Height="30" Margin="0,5,0,0"/>
 

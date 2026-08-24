@@ -22,6 +22,15 @@ namespace GoldDigger.ViewModel
         [ObservableProperty]
         private string errorMessage;
 
+        [ObservableProperty]
+        private string confirmPassword; // for pw verification field in register mode
+
+        [ObservableProperty]
+        private bool isRegisterMode = false; // for registr emode
+
+        [ObservableProperty]
+        private string registerButtonText = "Registrieren"; // Text ändert sich dynamisch
+
 
         // EVENTS
 
@@ -29,7 +38,7 @@ namespace GoldDigger.ViewModel
 
         // METHODS
 
-        // ---- Relay Command Login Button, async to implement delay for readbility
+        // ---- Relay Command Login Button, async to implement delay for readability
         [RelayCommand]
         private async Task Login()
         {
@@ -69,10 +78,28 @@ namespace GoldDigger.ViewModel
         [RelayCommand]
         public async Task Register()
         {
+
+            // change in to register mode on click
+            if (!IsRegisterMode)
+            {
+                IsRegisterMode = true;
+                ErrorMessage = "Bitte gib dein Passwort zur Bestätigung erneut ein.";
+                return; // return, no save yet
+            }
+
+
+            // ---- start register mode:
             // check if field(s) are empty
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
                 ErrorMessage = "Bitte alle Felder ausfüllen!";
+                return;
+            }
+
+            // check if passwords are matching
+            if (Password != ConfirmPassword)
+            {
+                ErrorMessage = "Die Passwörter stimmen nicht überein!";
                 return;
             }
 
@@ -111,10 +138,22 @@ namespace GoldDigger.ViewModel
                     OnLoginSuccess?.Invoke();
 
                 }
+
+
             }
             
         }
-     
-    // END CLASS
+
+        // relay command for existing register mode
+        [RelayCommand]
+        private void CancelRegister()
+        {
+            IsRegisterMode = false;
+            ConfirmPassword = string.Empty;
+            ErrorMessage = string.Empty;
+        }
+
+
+        // END CLASS
     }
 }
