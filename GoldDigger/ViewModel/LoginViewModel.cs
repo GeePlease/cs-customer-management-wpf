@@ -34,7 +34,7 @@ namespace GoldDigger.ViewModel
 
         // EVENTS
 
-        public event Action OnLoginSuccess;
+        public event Action<string> OnLoginSuccess; // pass on username
 
         // METHODS
 
@@ -64,7 +64,7 @@ namespace GoldDigger.ViewModel
                     await Task.Delay(1200);
 
                     // Login success event
-                    OnLoginSuccess?.Invoke();
+                    OnLoginSuccess?.Invoke(user.UserName);
 
                 }
                 else
@@ -135,7 +135,7 @@ namespace GoldDigger.ViewModel
                     await Task.Delay(1200);
 
                     // Login Success Event
-                    OnLoginSuccess?.Invoke();
+                    OnLoginSuccess?.Invoke(newUser.UserName);
 
                 }
 

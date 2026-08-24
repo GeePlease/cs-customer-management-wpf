@@ -66,10 +66,10 @@ namespace GoldDigger.ViewModel
         // METHODS
 
         // ----On Login Success
-        private void HandleLoginSuccess()
+        private void HandleLoginSuccess(string loggedInUserName)
         {
             // header message
-            UserMessage = "Erfolgreich angemeldet!";
+            UserMessage = "Willkommen " + loggedInUserName +" !";
 
             // enable menu buttons
             IsMenuEnabled = true;
