@@ -6,6 +6,7 @@ namespace GoldDigger.ViewModel
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+
         // ATTRIBUTES & VIEWMODELS
 
 
@@ -19,6 +20,11 @@ namespace GoldDigger.ViewModel
         // NewCustomer View Model
         [ObservableProperty]
         private NewCustomerViewModel newCustomerVM = new NewCustomerViewModel();
+
+        // EditCustomer View odel - no init. bc no customer selected at start/ no data for model
+        [ObservableProperty]
+        private EditCustomerViewModel editCustomerVM;
+
 
         // Menu Button Visbility property
         [ObservableProperty]
@@ -34,6 +40,11 @@ namespace GoldDigger.ViewModel
         // Visibility New Customer Mask
         [ObservableProperty]
         private bool isNewCustomerVisible = false;
+
+        // Visibility Edit Customer Mask
+        [ObservableProperty]
+        private bool isEditCustomerVisible;
+
 
         // User Navigation Message
         [ObservableProperty]
@@ -79,6 +90,7 @@ namespace GoldDigger.ViewModel
 
             IsNewCustomerVisible = false;
             IsCustomersVisible = true;
+            IsEditCustomerVisible = false;
         }
 
         // ----Relay Command: Button  click "Neukunde anlegen" - change visibility
@@ -86,7 +98,41 @@ namespace GoldDigger.ViewModel
         {
             IsCustomersVisible = false;
             IsNewCustomerVisible = true;
+            IsEditCustomerVisible = false;
         }
+
+
+        // ----Relay Command: Butno click "Kunde bearbeiten" - change visibility
+        [RelayCommand]
+        private void ShowEditCustomerView()
+        {
+            // check if customer = selected (marked in customer view)
+            if (CustomersVM.SelectedCustomer == null)
+            {
+                UserMessage = "Bitte zuerst einen Kunden in der Liste auswählen!";
+                return;
+            }
+
+            // Empty Message Box
+            UserMessage = string.Empty;
+
+            // Create edit viewmodel and pass on selected customer
+            EditCustomerVM = new EditCustomerViewModel(CustomersVM.SelectedCustomer);
+
+            // Subscribe to Event Event to update list after save
+            EditCustomerVM.OnCustomerEdited += () => // defined here via lambda
+            {
+                CustomersVM.LoadCustomers(); // reload customers
+                ShowCustomersView();         // back to customers view
+            };
+
+            // Change visibilities of views
+            IsLoginVisible = false;
+            IsCustomersVisible = false;
+            IsNewCustomerVisible = false;
+            IsEditCustomerVisible = true;
+        }
+
 
         // ----Relay Command: Button click "Kunde löschen"
         [RelayCommand]

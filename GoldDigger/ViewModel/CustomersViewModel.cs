@@ -2,9 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GoldDigger.Data;
 using GoldDigger.Model;
-using GoldDigger.View;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 
 namespace GoldDigger.ViewModel
@@ -36,8 +34,8 @@ namespace GoldDigger.ViewModel
             {
                 var customersFromDb = db.Customers.ToList();
 
-                // HIER: Nutze die vom Toolkit generierte Property (Großgeschrieben) 
-                // und erzeuge direkt eine neue Collection. Das sendet nur EINMALEIG ein Signal an die UI!
+                //create new collection with property
+                // 1!! UI signal only
                 CustomersList = new ObservableCollection<Customer>(customersFromDb);
             }
         }
@@ -46,14 +44,14 @@ namespace GoldDigger.ViewModel
         [RelayCommand]
         public void DeleteCustomer()
         {
-            // Prüfen, ob überhaupt ein Kunde ausgewählt wurde
+            // check if customer selected
             if (SelectedCustomer == null)
             {
                 MessageBox.Show("Bitte wählen Sie zuerst einen Kunden aus.", "Hinweis", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
-            // Sicherheitsfrage (MessageBox)
+            // safety message check (MessageBox)
             var result = MessageBox.Show(
                 $"Möchten Sie den Kunden {SelectedCustomer.FirstName} {SelectedCustomer.LastName} wirklich löschen?",
                 "Kunden löschen",
@@ -64,8 +62,8 @@ namespace GoldDigger.ViewModel
             {
                 using (var db = new AppDbContext())
                 {
-                    // WICHTIG bei EF Core: Da das Objekt aus einer vorherigen DB-Abfrage stammt (detached),
-                    // suchen wir es am besten über die ID frisch aus der Datenbank und löschen es dann.
+                    // EF Core: object from former DB-Abquery(detached),
+                    // search via id, then delete
                     var customerToDelete = db.Customers.Find(SelectedCustomer.CustomerId);
                     if (customerToDelete != null)
                     {
@@ -74,7 +72,7 @@ namespace GoldDigger.ViewModel
                     }
                 }
 
-                // Sofort aus der lokalen ObservableCollection entfernen, damit die UI aktualisiert wird
+                // remove from observable collection for ui refresh
                 CustomersList.Remove(SelectedCustomer);
             }
         }

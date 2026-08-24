@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GoldDigger.Data;
 using GoldDigger.Model;
+using GoldDigger.Services;
 
 namespace GoldDigger.ViewModel
 {
@@ -42,11 +43,11 @@ namespace GoldDigger.ViewModel
             // db connection
             using (var db = new AppDbContext())
             {
-                // get matching user data
-                var user = db.Users.FirstOrDefault(u => u.UserName == Username && u.PasswordHash == Password);
+                // get matching user data: usernanme
+                var user = db.Users.FirstOrDefault(u => u.UserName == Username);
 
-                // check if match exists
-                if (user != null)
+                // check if match exists, check if pw matches hash in db via PasswordService verification
+                if (user != null && PasswordService.VerifyPassword(user.PasswordHash, Password))
                 {
                     ErrorMessage = $"Erfolgreich angemeldet als {user.UserName}";
 
@@ -81,18 +82,21 @@ namespace GoldDigger.ViewModel
                 // check if user already exists
                 var existingUser = db.Users.FirstOrDefault(u => u.UserName == Username);
 
-                
                 if (existingUser != null)
                 {
                     ErrorMessage = "Benutzername existiert bereits";
                 }
                 else
                 {
+
+                    // hash password!
+                    string hashedPassword = PasswordService.HashPassword(Password);
+
                     // create new user 
                     var newUser = new User
                     {
                         UserName = Username,
-                        PasswordHash = Password
+                        PasswordHash = hashedPassword
                     };
 
                     // add new user to db

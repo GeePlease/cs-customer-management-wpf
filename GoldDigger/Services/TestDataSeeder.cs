@@ -1,8 +1,10 @@
 ﻿using GoldDigger.Data;
 using GoldDigger.Model;
+using GoldDigger.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace GoldDigger.Services
 {
@@ -32,12 +34,12 @@ namespace GoldDigger.Services
                 new Customer { FirstName = "Peter", LastName = "Parker", Street = "Fotoweg", StreetNumber = "15", PostCode = "30159", Residence = "Hannover", Mail = "peter@bugle.de" }
             };
 
-            // create user test data and save in list
+            // create user test data and save in list (include pw hashing!!!!)
             var testDataUsers = new List<User>
             {
-                new User { UserName = "admin", PasswordHash = "123" },
-                new User { UserName = "boss", PasswordHash = "456" },
-                new User { UserName = "worker", PasswordHash = "789" }
+                new User { UserName = "admin", PasswordHash = PasswordService.HashPassword("123") },
+                new User { UserName = "boss", PasswordHash = PasswordService.HashPassword("456") },
+                new User { UserName = "worker", PasswordHash = PasswordService.HashPassword("789") }
             };
 
             // connect to db and save data
