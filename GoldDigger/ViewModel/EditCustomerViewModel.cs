@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GoldDigger.Data;
 using GoldDigger.Model;
+using GoldDigger.Services;
 using System;
 using System.IO;
 using System.Security.Policy;
@@ -68,17 +69,11 @@ namespace GoldDigger.ViewModel
         [RelayCommand]
         public void EditCustomer()
         {
-            // check if any of the fields are empty
-            if (string.IsNullOrWhiteSpace(FirstName) ||
-                string.IsNullOrWhiteSpace(LastName) ||
-                string.IsNullOrWhiteSpace(Street) ||
-                string.IsNullOrWhiteSpace(StreetNumber) ||
-                string.IsNullOrWhiteSpace(PostCode) ||
-                string.IsNullOrWhiteSpace(Residence) ||
-                string.IsNullOrWhiteSpace(Mail))
+            // Use validator from ustomerDataValidationService
+            if (!CustomerValidationService.ValidateCustomer(FirstName, LastName, Street, StreetNumber, PostCode, Residence, Mail, out string error))
             {
-                Message = "Bitte alle Felder ausfüllen!";
-                return;
+                Message = error; // specific error message
+                return;          // return if invalid
             }
 
             // connect to db and update customer in db
