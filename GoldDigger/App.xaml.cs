@@ -35,7 +35,7 @@ namespace GoldDigger
             }
             catch (Exception ex)
             {
-                // Hier landet jeder echte Fehler (Pfad falsch, Rechte fehlen etc.)
+                // catch errors and origiginal error messages
                 MessageBox.Show($"Datenbankfehler beim Start: {ex.Message}", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

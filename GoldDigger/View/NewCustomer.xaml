@@ -12,13 +12,13 @@
         <Border Background="White" CornerRadius="10" Margin="15" Padding="20"
                 BorderBrush="#E0E0E0" BorderThickness="1">
 
-            <!-- Formular-Inhalt komplett als einheitlicher, zentrierter Block -->
+            <!-- Formular-Inhalt zentrierter Block -->
             <StackPanel Width="420" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <!-- Überschrift / Titel (jetzt sauber mit den Feldern linksbündig ausgerichtet) -->
+                <!-- Überschrift / Titel -->
                 <TextBlock Text="Neukunde anlegen" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
 
-                <!-- Vorname & Nachname nebeneinander -->
+                <!-- Vorname & Nachname -->
                 <Grid Margin="0,0,0,8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -37,7 +37,7 @@
                     </StackPanel>
                 </Grid>
 
-                <!-- Straße & Hausnummer nebeneinander -->
+                <!-- Straße & Hausnummer -->
                 <Grid Margin="0,0,0,8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*" />
@@ -56,7 +56,7 @@
                     </StackPanel>
                 </Grid>
 
-                <!-- PLZ & Wohnort nebeneinander -->
+                <!-- PLZ & Wohnort -->
                 <Grid Margin="0,0,0,8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.2*" />

@@ -9,36 +9,34 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <!-- Eingebauter Converter, der true zu Visible und false zu Collapsed macht -->
+        <!-- Converter Bool Visibility -->
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
 
     <!-- Grid zum Zentrieren der Login-Karte -->
     <Grid>
 
-        <!-- Weiße "Login-Karte" (Höhe etwas dynamischer oder groß genug für das Zusatzfeld) -->
+        <!-- Weiße "Login-Karte"-->
         <Border Width="350" Background="White" CornerRadius="10" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 BorderBrush="#E0E0E0" BorderThickness="1" Padding="25">
 
             <StackPanel>
 
-                <!-- Überschrift ändert sich optional je nach Modus -->
+                <!-- Header -->
                 <TextBlock Text="Login" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,0,0,15"/>
 
                 <!-- Benutzername -->
                 <TextBlock Text="Benutzername" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Height="32" Padding="5" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
 
-                <!-- Passwort 1 -->
+                <!-- Passwort  -->
                 <TextBlock Text="Passwort" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
                 <PasswordBox x:Name="txt_password" PasswordChanged="PasswordBox_PasswordChanged" Height="32" Padding="5" Margin="0,0,0,10" VerticalContentAlignment="Center"/>
 
                 <!-- PASSWORT BESTÄTIGEN (Wird nur im Registrierungs-Modus eingeblendet!) -->
                 <StackPanel Visibility="{Binding IsRegisterMode, Converter={StaticResource BoolToVis}}">
                     <TextBlock Text="Passwort wiederholen" FontWeight="SemiBold" Foreground="#2C3E50" Margin="0,0,0,3"/>
-                    <!-- Hinweis: Für die 2te PasswordBox müsstest du im Code-Behind ein Event anlegen oder per Binding lösen. 
-                         Da PasswordBox kein direktes Binding unterstützt, lösen wir das im Code-Behind ähnlich wie das erste Feld -->
                     <PasswordBox x:Name="txt_confirmPassword" PasswordChanged="ConfirmPasswordBox_PasswordChanged" Height="32" Padding="5" Margin="0,0,0,15" VerticalContentAlignment="Center"/>
                 </StackPanel>
 
@@ -50,7 +48,7 @@
                         <Style TargetType="Button">
                             <Setter Property="Visibility" Value="Visible"/>
                             <Style.Triggers>
-                                <!-- Wenn IsRegisterMode true ist, wird der Button eingeklappt -->
+                                <!-- Wenn IsRegisterMode true, Button sichtbar -->
                                 <DataTrigger Binding="{Binding IsRegisterMode}" Value="True">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                 </DataTrigger>
