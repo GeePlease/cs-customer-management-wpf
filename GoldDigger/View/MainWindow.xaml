@@ -44,15 +44,8 @@
                 <!-- Left Section -->
                 <TextBlock Grid.Column="0" Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
 
-                <!-- Middle Section -->
-                <TextBlock Grid.Column="1" Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-                <!-- Right Section-->
-                <Button Grid.Column="2" Content="Logout" 
-                Command="{Binding LogoutCommand}" 
-                IsEnabled="{Binding IsMenuEnabled}"
-                Background="#1ABC9C" Foreground="White" FontWeight="Bold" 
-                Padding="10,5" Cursor="Hand"/>
+                <!-- Right Section -->
+                <TextBlock Grid.Column="1" Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             </Grid>
         </Border>
 

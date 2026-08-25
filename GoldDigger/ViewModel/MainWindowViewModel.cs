@@ -154,23 +154,6 @@ namespace GoldDigger.ViewModel
             Application.Current.Shutdown();
         }
 
-        // ----Relay Command: Logout (click "Logout")
-        [RelayCommand]
-        public void Logout()
-        {
-            // reset view visibilities
-            IsLoginVisible = true;
-            IsCustomersVisible = false;
-            IsNewCustomerVisible = false;
-            IsEditCustomerVisible = false;
-
-            // reset menu button visibility
-            IsMenuEnabled = false;
-
-            // reset header user message
-            UserMessage = "Bitte einloggen oder registrieren.";
-        }
-
 
         // End Class
     }
