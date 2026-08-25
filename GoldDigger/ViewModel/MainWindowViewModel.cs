@@ -26,7 +26,7 @@ namespace GoldDigger.ViewModel
         private EditCustomerViewModel editCustomerVM;
 
 
-        // Menu Button Visbility property
+        // Menu Button Visbility property (Logout Button included)
         [ObservableProperty]
         private bool isMenuEnabled = false;
 
@@ -48,7 +48,7 @@ namespace GoldDigger.ViewModel
 
         // User Navigation Message
         [ObservableProperty]
-        private string userMessage = "Bitte einloggen";
+        private string userMessage = "Bitte einloggen oder registrieren.";
 
 
         // CONSTRUCTOR
@@ -109,7 +109,7 @@ namespace GoldDigger.ViewModel
             // check if customer = selected (marked in customer view)
             if (CustomersVM.SelectedCustomer == null)
             {
-                UserMessage = "Bitte zuerst einen Kunden in der Liste auswählen!";
+                UserMessage = "Bitte zuerst einen Kunden in der Liste auswählen.";
                 return;
             }
 
@@ -138,11 +138,11 @@ namespace GoldDigger.ViewModel
         [RelayCommand]
         private void DeleteCustomer()
         {
-            // 1. Sicher zur Kundenübersicht wechseln
+            // Change visibilities of views
             IsNewCustomerVisible = false;
             IsCustomersVisible = true;
 
-            // 2. Den Lösch-Befehl im CustomersViewModel ausführen
+            // delete method from customers view model
             CustomersVM.DeleteCustomer();
         }
 
@@ -153,6 +153,24 @@ namespace GoldDigger.ViewModel
         {
             Application.Current.Shutdown();
         }
+
+        // ----Relay Command: Logout (click "Logout")
+        [RelayCommand]
+        public void Logout()
+        {
+            // reset view visibilities
+            IsLoginVisible = true;
+            IsCustomersVisible = false;
+            IsNewCustomerVisible = false;
+            IsEditCustomerVisible = false;
+
+            // reset menu button visibility
+            IsMenuEnabled = false;
+
+            // reset header user message
+            UserMessage = "Bitte einloggen oder registrieren.";
+        }
+
 
         // End Class
     }

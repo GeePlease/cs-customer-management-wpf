@@ -20,6 +20,7 @@
     </Window.DataContext>
 
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="202"/>
             <ColumnDefinition Width="38"/>
@@ -33,13 +34,28 @@
 
         <!-- HEADER / TITEL -->
         <Border Grid.ColumnSpan="3" Grid.Row="0" Background="#2C3E50" Padding="15">
-            <DockPanel>
-                
-                <TextBlock Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-           
-            </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/> 
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Section -->
+                <TextBlock Grid.Column="0" Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+
+                <!-- Middle Section -->
+                <TextBlock Grid.Column="1" Text="{Binding UserMessage}" Foreground="#1ABC9C" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <!-- Right Section-->
+                <Button Grid.Column="2" Content="Logout" 
+                Command="{Binding LogoutCommand}" 
+                IsEnabled="{Binding IsMenuEnabled}"
+                Background="#1ABC9C" Foreground="White" FontWeight="Bold" 
+                Padding="10,5" Cursor="Hand"/>
+            </Grid>
         </Border>
+
 
         <!-- LEFT MENU -->
         <Border Grid.Column="0" Grid.Row="1" Background="#1E272E" Padding="15" Grid.ColumnSpan="2">
@@ -74,7 +90,7 @@
 
                 </StackPanel>
 
-                <!-- Low Button: Beenden (always visible -->
+                <!-- Low Button: Beenden (always visible) -->
                 <StackPanel Grid.Row="1">
                     <Separator Background="#34495E" Margin="0,10"/>
                     <Button Command="{Binding ExitApplicationCommand}" Content="Beenden" Background="#1ABC9C" Foreground="White" Height="35" FontWeight="Bold"/>
@@ -82,7 +98,7 @@
             </Grid>
         </Border>
 
-        <!-- MAIN SECTION / CONTENT (Alle Ansichten exakt nach dem Vorbild eingebunden) -->
+        <!-- MAIN SECTION / CONTENT -->
 
         <!--  LOGIN VIEW -->
         <ContentControl Grid.Column="2" Grid.Row="1" Margin="15" 
