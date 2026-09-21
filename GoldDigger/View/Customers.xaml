@@ -38,7 +38,7 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
 
-                    <!-- Colums based on Customer.cs (no ID) -->
+                    <!-- Columns based on Customer.cs (no ID) -->
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Vorname" Binding="{Binding FirstName}" Width="120"/>
                         <DataGridTextColumn Header="Nachname" Binding="{Binding LastName}" Width="120"/>

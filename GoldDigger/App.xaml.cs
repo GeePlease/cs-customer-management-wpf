@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using GoldDigger.Data;
 using GoldDigger.Services; // namespace
+using System.Diagnostics; // for error messages
 
 
 namespace GoldDigger
@@ -25,17 +26,17 @@ namespace GoldDigger
                 // automatic EnsureCreated() check included
                 using (var db = new AppDbContext())
                 {
-                    Console.WriteLine("Datenbank erfolgreich initialisiert!");
+                    Debug.WriteLine("Datenbank erfolgreich initialisiert!");
                 }
 
-                // create test data (from Serviess/ TestDataSeeder)
+                // create test data (from Services/ TestDataSeeder)
                 TestDataSeeder.CreateTestData();
-                Console.WriteLine("Testdaten erfolgreich kreiert.");
+                Debug.WriteLine("Testdaten erfolgreich kreiert.");
 
             }
             catch (Exception ex)
             {
-                // catch errors and origiginal error messages
+                // catch errors and original error messages
                 MessageBox.Show($"Datenbankfehler beim Start: {ex.Message}", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

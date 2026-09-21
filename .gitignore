@@ -1,34 +1,70 @@
 # --- Visual Studio ---
+.vs/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
-.vs/
 
-# --- Build-Ordner (WPF / C#) ---
-bin/
-obj/
-Debug/
-Release/
+# --- JetBrains Rider / ReSharper ---
+.idea/
+*.sln.iml
+*.DotSettings.user
+_ReSharper.Caches/
+
+# --- Build-Ordner (.NET / WPF) ---
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
 x64/
 x86/
+ClientBin/
 
-# --- Benutzer-/Backup-Dateien ---
+# --- NuGet ---
+packages/
+*.nupkg
+*.snupkg
+
+# --- Benutzer-/Backup-/temporäre Dateien ---
 *.log
 *.cache
+*.tmp
+*.temp
+*.bak
 *.opendb
 *.VC.db
 *.opensdf
 *.sdf
-
-# --- WPF / .NET spezifisch ---
-[Oo]bj/
-[Bb]in/
-ClientBin/
 [Ll]og/
 [Ll]ogs/
 
+# --- Lokale Konfiguration / Secrets ---
+*.env
+.env
+.env.*
+appsettings.Local.json
+appsettings.*.local.json
+secrets.json
+
+# --- SQLite Datenbanken ---
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# --- Test / Coverage Output ---
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# --- Publish Output ---
+publish/
+
 # --- Betriebssysteme ---
+
 # Windows
 Thumbs.db
 ehthumbs.db
@@ -38,8 +74,3 @@ Desktop.ini
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# --- SQLite Datenbanken ---
-*.db
-*.db-shm
-*.db-wal

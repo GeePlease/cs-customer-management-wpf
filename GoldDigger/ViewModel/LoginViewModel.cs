@@ -24,7 +24,7 @@ namespace GoldDigger.ViewModel
         private string confirmPassword; // for pw verification field in register mode
 
         [ObservableProperty]
-        private bool isRegisterMode = false; // for registr emode
+        private bool isRegisterMode = false; // for register mode
 
         [ObservableProperty]
         private string registerButtonText = "Registrieren"; // Text ändert sich dynamisch

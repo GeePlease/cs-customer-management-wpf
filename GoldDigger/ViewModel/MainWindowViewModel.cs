@@ -11,8 +11,7 @@ namespace GoldDigger.ViewModel
 
 
         // Login-ViewModel, called in MainWindow.xaml 
-        [ObservableProperty]
-        private LoginViewModel loginVM = new LoginViewModel();
+        public LoginViewModel LoginVM { get; } = new LoginViewModel();
 
         // Customers-ViewModel, called in MainWindow.xaml (public! not oversable)
         public  CustomersViewModel CustomersVM { get; } = new CustomersViewModel();
@@ -54,6 +53,7 @@ namespace GoldDigger.ViewModel
         // CONSTRUCTOR
         public MainWindowViewModel()
         {
+            // Event from LoginViewodel
             LoginVM.OnLoginSuccess += HandleLoginSuccess;
 
             // Event from NewCustomerViewModel:
@@ -65,7 +65,7 @@ namespace GoldDigger.ViewModel
 
         // METHODS
 
-        // ----On Login Success
+        // ---- Handle successfull login
         private void HandleLoginSuccess(string loggedInUserName)
         {
             // header message

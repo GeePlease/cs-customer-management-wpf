@@ -58,7 +58,8 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Top buttons  (Binding isMenuEnabled) -->
+                <!-- Top buttons  (Binding isMenuEnabled w visibility converter + command Bindings) -->
+                <!-- multi bindings with DIFFERENT properties possible-->
                 <StackPanel Grid.Row="0">
                     
                     <Button Content="Kundendaten anzeigen" Command="{Binding ShowCustomersViewCommand}" 
@@ -91,7 +92,7 @@
             </Grid>
         </Border>
 
-        <!-- MAIN SECTION / CONTENT -->
+        <!-- MAIN SECTION / CONTENT WITH 4 OVERLAY VIEWS, navigation via visibility toggles -->
 
         <!--  LOGIN VIEW -->
         <ContentControl Grid.Column="2" Grid.Row="1" Margin="15" 

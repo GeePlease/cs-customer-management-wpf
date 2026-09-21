@@ -30,7 +30,7 @@ namespace GoldDigger.ViewModel
         // ---- load customers method to show in datagrid
         public void LoadCustomers()
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContext()) // open safe db connection and close automat.
             {
                 var customersFromDb = db.Customers.ToList();
 
@@ -40,7 +40,7 @@ namespace GoldDigger.ViewModel
             }
         }
 
-        // ----Relay Command: Kunde löschen button
+        // ----Relay Command: Kunde löschen Button
         [RelayCommand]
         public void DeleteCustomer()
         {
@@ -62,7 +62,7 @@ namespace GoldDigger.ViewModel
             {
                 using (var db = new AppDbContext())
                 {
-                    // EF Core: object from former DB-Abquery(detached),
+                    // EF Core: object from former DB-bquery(detached),
                     // search via id, then delete
                     var customerToDelete = db.Customers.Find(SelectedCustomer.CustomerId);
                     if (customerToDelete != null)
